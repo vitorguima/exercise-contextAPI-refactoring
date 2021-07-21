@@ -1,23 +1,12 @@
-import { createStore } from 'redux';
-import { MOVE_CAR } from './actionCreators';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import Provider from './context/Provider';
 
-const initialState = {
-  cars: {
-    red: false,
-    blue: false,
-    yellow: false,
-  },
-};
 
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case MOVE_CAR:
-      return { ...state, cars: { ...state.cars, [action.car]: action.side } };
-    default:
-      return state;
-  }
-}
-
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-export default store;
+ReactDOM.render(
+  <Provider>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
